@@ -40,9 +40,9 @@ class Board {
         if (cellNumber > this.numberOfCells || cellNumber < 1) {
             return false;
         }
-        const rowNum = Math.ceil(cellNumber / this.board.size) - 1;
-        const colNum = (cellNumber - 1) % this.board.size;
-        if (this.board.cells[rowNum] && this.board.cells[colNum]) {
+        const rowNum = Math.ceil(cellNumber / this.size) - 1;
+        const colNum = (cellNumber - 1) % this.size;
+        if (this.cells[rowNum] && this.cells[colNum]) {
             return this.cells[rowNum][colNum];
         }
         return false;
@@ -50,7 +50,7 @@ class Board {
 
     markCell(cellNumber, symbol) {
         const cell = this.getCell(cellNumber);
-        if (cell === null) {
+        if (cell === false) {
             return util.format('No such cell number : %s', cellNumber);
         }
         if (!cell.isAvailable()) {

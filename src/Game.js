@@ -42,14 +42,11 @@ class Game {
     }
 
     markCell(cellNumber) {
-        console.log('Game.markCell() called.');
         const output = this.board.markCell(cellNumber, this.getCurrentPlayer().symbol);
         if (output === true) {
-            console.log('Game.markCell() returned true.');
             return true;
         }
-        console.log('Game.markCell() returned false.');
-        return false;
+        return output;
     }
 }
 

@@ -7,14 +7,10 @@ class MarkCell extends BaseCommand {
     }
 
     execute(input) {
-        console.log('MarkCell.execute()');
         if (!this.isValidInput(input)) {
-            console.log('MarkCell.execute() Input is invalid');
             return false;
         }
-        console.log('commands/MarkCell input is valid');
         const output = this.gameManager.getGame().markCell(parseInt(input, 10));
-        console.log('Output of Game.markCell()', output);
         if (output === true) {
             this.gameManager.getGame().switchPlayer();
             return true;
