@@ -18,6 +18,10 @@ class EnterBoardSize extends BaseCommand {
             this.error = 'Please enter a valid number.';
             return false;
         }
+        if (parseInt(input, 10) < 3) {
+            this.error = 'Please enter a valid number greater than or equal to 3.';
+            return false;
+        }
         return true;
     }
 }

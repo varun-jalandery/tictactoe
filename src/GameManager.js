@@ -14,5 +14,9 @@ class GameManager {
         }
         return '';
     }
+
+    static isGameComplete() {
+        return game.isGameComplete();
+    }
 }
 module.exports = GameManager;

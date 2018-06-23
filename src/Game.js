@@ -1,3 +1,4 @@
+const util = require('util');
 const Board = require('./Board');
 const Player = require('./Player');
 
@@ -7,6 +8,8 @@ class Game {
         this.player1 = null;
         this.player2 = null;
         this.board = null;
+        this.isComplete = false;
+        this.winner = null;
     }
 
     setBoard(size) {
@@ -51,10 +54,40 @@ class Game {
             this.getCurrentPlayer().symbol
         );
         if (output === true) {
+            this.checkGame();
+            this.switchPlayer();
             return true;
         }
+        this.checkGame();
         return output;
     }
+
+
+    isGameComplete() {
+        return this.isComplete;
+    }
+
+    checkGame() {
+        if (this.getBoard().isWinningStreakOccurringAroundCell()) {
+            this.isComplete = true;
+            this.winner = SON.parse(JSON.stringify(this.currentPlayer));
+        } else if (this.getBoard().isBoardFull()) {
+            this.isComplete = true;
+        }
+    }
+
+    getResults() {
+        let results = '';
+        if (this.isGameComplete()) {
+            if (this.winner) {
+                results += util.format('Player %s has won with symbol %s\n', this.winner.name, this.winner.symbol);
+            } else {
+                results += 'No player has won.\nGame Ended.'
+            }
+        }
+        return results;
+    }
+
 }
 
 module.exports = Game;

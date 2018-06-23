@@ -20,12 +20,17 @@ class InputOutput {
         });
         reader.on('line', input => {
             const result = gameFlow.execute(input);
+            let output = '';
             this.writer.write(GameManager.getBoardDrawing());
             if (result === false) {
-                this.writer.write(gameFlow.getError() + '\n');
+                output += gameFlow.getError();
             }
-
-            this.writer.write(gameFlow.getPrompt() + '\n');
+            if (GameManager.isGameComplete()) {
+                this.writer.write(GameManager.getGame().getResults());
+                process.exit(0);
+            }
+            output += gameFlow.getPrompt();
+            this.writer.write(output + '\n');
         });
     }
 }

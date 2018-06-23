@@ -74,6 +74,10 @@ class Board {
         return this.numberOfCells <= this.numberOfCellsOccupied;
     }
 
+    isWinningStreakOccurringAroundCell(cellNumber) {
+        return false;
+    }
+
     getBoardDrawing() {
         const pad = function(n, width, z) {
             z = z || '0';

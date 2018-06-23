@@ -12,7 +12,6 @@ class MarkCell extends BaseCommand {
         }
         const output = this.gameManager.getGame().markCell(parseInt(input, 10));
         if (output === true) {
-            this.gameManager.getGame().switchPlayer();
             return true;
         }
         this.error = output;
