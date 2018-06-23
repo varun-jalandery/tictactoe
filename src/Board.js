@@ -11,7 +11,7 @@ class Board {
     initBoard(size) {
         if (!this.isSizeValid(size)) {
             throw new Error(
-                util.formar('size is not valid, %s', JSON.stringify(size))
+                util.format('size is not valid, %s', JSON.stringify(size))
             );
         }
         this.size = parseInt(size, 10);

@@ -14,12 +14,12 @@ class EnterBoardSize extends BaseCommand {
     }
 
     isValidInput(input) {
-        if (isNaN(input)) {
-            this.error = 'Please enter a valid number.';
+        if (isNaN(input) || !input) {
+            this.error = 'Please enter a valid board size.\n';
             return false;
         }
         if (parseInt(input, 10) < 3) {
-            this.error = 'Please enter a valid number greater than or equal to 3.';
+            this.error = 'Please enter a valid board size greater than or equal to 3.\n';
             return false;
         }
         return true;

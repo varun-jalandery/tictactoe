@@ -15,7 +15,7 @@ class EnterPlayerName extends BaseCommand {
     }
 
     isValidInput(input) {
-        if (!input && typeof input !== 'string') {
+        if (!input || typeof input !== 'string') {
             this.error = 'Please enter a valid name.';
             return false;
         }
