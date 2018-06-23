@@ -42,12 +42,18 @@ class Board {
         if (cellNumber > this.numberOfCells || cellNumber < 1) {
             return false;
         }
-        const rowNum = Math.ceil(cellNumber / this.size) - 1;
-        const colNum = (cellNumber - 1) % this.size;
-        if (this.cells[rowNum] && this.cells[colNum]) {
-            return this.cells[rowNum][colNum];
+        const coordinate = this.getCoordinate(cellNumber);
+        if (this.cells[coordinate.row] && this.cells[coordinate.col]) {
+            return this.cells[coordinate.row][coordinate.col];
         }
         return false;
+    }
+
+    getCoordinate(cellNumber) {
+        return {
+            row : Math.ceil(cellNumber / this.size) - 1,
+            col : (cellNumber - 1) % this.size
+        };
     }
 
     markCell(cellNumber, symbol) {
@@ -74,8 +80,88 @@ class Board {
         return this.numberOfCells <= this.numberOfCellsOccupied;
     }
 
-    isWinningStreakOccurringAroundCell(cellNumber) {
-        return false;
+    isWinningStreakOccurringAroundCell(cellNumber, symbol) {
+        if (cellNumber < 1 && cellNumber > this.numberOfCells) {
+            return false;
+        }
+        return this.checkStreaks(cellNumber, symbol);
+    }
+
+    checkStreaks(cellNumber, symbol) {
+        if(this.checkRowStreaks(cellNumber, symbol)) {
+            return true;
+        }
+        return this.checkColStreaks(cellNumber, symbol);
+    }
+
+    checkRowStreaks(cellNumber, symbol) {
+        let result = false;
+        const coordinate = this.getCoordinate(cellNumber);
+        const isLeftStreakPossible = coordinate.col >= STREAK_LENGTH - 1;
+        const isCenterStreakPossible = coordinate.col >= 1 && coordinate.col < this.size - 1;
+        const isRightStreakPossible = coordinate.col <= this.size - STREAK_LENGTH;
+
+        if (isLeftStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row][coordinate.col - 1].value,
+                this.cells[coordinate.row][coordinate.col - 2].value
+            ].every(val => val == symbol);
+        }
+        if (result) return result;
+
+        if (isCenterStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row][coordinate.col - 1].value,
+                this.cells[coordinate.row][coordinate.col + 1].value
+            ].every(val => val == symbol);
+        }
+        if (result) return result;
+
+        if (isRightStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row][coordinate.col + 1].value,
+                this.cells[coordinate.row][coordinate.col + 2].value
+            ].every(val => val == symbol);
+        }
+        return result;
+    }
+
+    checkColStreaks(cellNumber, symbol) {
+        let result = false;
+        const coordinate = this.getCoordinate(cellNumber);
+        const isTopStreakPossible = coordinate.row >= STREAK_LENGTH - 1;
+        const isCenterStreakPossible = coordinate.row >= 1 && coordinate.row < this.size - 1;
+        const isBottomStreakPossible = coordinate.row <= this.size - STREAK_LENGTH;
+
+        if (isTopStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row - 1][coordinate.col].value,
+                this.cells[coordinate.row - 2][coordinate.col].value
+            ].every(val => val == symbol);
+        }
+        if (result) return result;
+
+        if (isCenterStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row - 1][coordinate.col].value,
+                this.cells[coordinate.row + 1][coordinate.col].value
+            ].every(val => val == symbol);
+        }
+        if (result) return result;
+
+        if (isBottomStreakPossible) {
+            result = [
+                this.cells[coordinate.row][coordinate.col].value,
+                this.cells[coordinate.row + 1][coordinate.col].value,
+                this.cells[coordinate.row + 2][coordinate.col].value
+            ].every(val => val == symbol);
+        }
+        return result;
     }
 
     getBoardDrawing() {

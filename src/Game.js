@@ -54,11 +54,10 @@ class Game {
             this.getCurrentPlayer().symbol
         );
         if (output === true) {
-            this.checkGame();
+            this.checkGame(cellNumber, this.currentPlayer.symbol);
             this.switchPlayer();
             return true;
         }
-        this.checkGame();
         return output;
     }
 
@@ -67,10 +66,10 @@ class Game {
         return this.isComplete;
     }
 
-    checkGame() {
-        if (this.getBoard().isWinningStreakOccurringAroundCell()) {
+    checkGame(cellNumber, symbol) {
+        if (this.getBoard().isWinningStreakOccurringAroundCell(cellNumber, symbol)) {
             this.isComplete = true;
-            this.winner = SON.parse(JSON.stringify(this.currentPlayer));
+            this.winner = JSON.parse(JSON.stringify(this.currentPlayer));
         } else if (this.getBoard().isBoardFull()) {
             this.isComplete = true;
         }
