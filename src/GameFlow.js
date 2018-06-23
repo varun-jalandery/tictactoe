@@ -48,7 +48,6 @@ class GameFlow {
     getPrompt() {
         return this.getCurrentStep().getPrompt();
     }
-
 }
 
 module.exports = GameFlow;

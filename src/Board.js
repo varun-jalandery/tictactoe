@@ -56,7 +56,10 @@ class Board {
             return util.format('No such cell number : %s', cellNumber);
         }
         if (!cell.isAvailable()) {
-            return util.format('Cell number : %s is already marked', cellNumber);
+            return util.format(
+                'Cell number : %s is already marked',
+                cellNumber
+            );
         }
         cell.setSymbol(symbol);
         this.numberOfCellsOccupied += 1;
@@ -75,8 +78,10 @@ class Board {
         const pad = function(n, width, z) {
             z = z || '0';
             n = n + '';
-            return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-        }
+            return n.length >= width
+                ? n
+                : new Array(width - n.length + 1).join(z) + n;
+        };
         let str = '\n\n';
         const padLength = this.numberOfCells.toString().length;
         for (let rowNum = 0; rowNum < this.size; rowNum++) {
@@ -89,7 +94,8 @@ class Board {
             }
             str += '\n';
             if (rowNum < this.size - 1) {
-                str += '-'.repeat(this.size * (padLength + 3) - padLength) + '\n';
+                str +=
+                    '-'.repeat(this.size * (padLength + 3) - padLength) + '\n';
             }
         }
         return str + '\n\n';

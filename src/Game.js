@@ -46,7 +46,10 @@ class Game {
     }
 
     markCell(cellNumber) {
-        const output = this.board.markCell(cellNumber, this.getCurrentPlayer().symbol);
+        const output = this.board.markCell(
+            cellNumber,
+            this.getCurrentPlayer().symbol
+        );
         if (output === true) {
             return true;
         }
