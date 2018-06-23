@@ -35,6 +35,10 @@ class MarkCell extends BaseCommand {
             currentPlayer.symbol
         );
     }
+
+    isBoardToBeDrawn() {
+        return true;
+    }
 }
 
 module.exports = MarkCell;

@@ -30,7 +30,7 @@ class GameFlow {
     }
 
     execute(input) {
-        const output = this.getCurrentStep().execute(input);
+        let output = this.getCurrentStep().execute(input);
         if (output !== false && this.currentStep.isOneTimeCommand()) {
             this.currentStep = this.getCurrentStep().next;
         }
@@ -48,6 +48,7 @@ class GameFlow {
     getPrompt() {
         return this.getCurrentStep().getPrompt();
     }
+
 }
 
 module.exports = GameFlow;

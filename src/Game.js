@@ -13,6 +13,10 @@ class Game {
         this.board = new Board(size);
     }
 
+    getBoard() {
+        return this.board;
+    }
+
     setPlayer(number, name) {
         switch (number) {
             case 1:

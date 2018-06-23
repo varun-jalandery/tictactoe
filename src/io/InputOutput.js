@@ -1,5 +1,5 @@
 const readline = require('readline');
-
+const GameManager = require('../GameManager');
 const GameFlow = require('../GameFlow');
 const gameFlow = new GameFlow();
 
@@ -19,10 +19,12 @@ class InputOutput {
             input: process.stdin
         });
         reader.on('line', input => {
-            const output = gameFlow.execute(input);
-            if (output === false) {
+            const result = gameFlow.execute(input);
+            this.writer.write(GameManager.getBoardDrawing());
+            if (result === false) {
                 this.writer.write(gameFlow.getError() + '\n');
             }
+
             this.writer.write(gameFlow.getPrompt() + '\n');
         });
     }
