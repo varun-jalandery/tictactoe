@@ -1,11 +1,11 @@
 class StreakCheckStraight {
 
-    static isWinningStreak(cells, coordinate, symbol, streakLength = 3) {
-        return StreakCheckStraight.isWinningStreakStraight(cells, coordinate, symbol, 'row', streakLength)
-            || StreakCheckStraight.isWinningStreakStraight(cells, coordinate, symbol, 'col', streakLength);
+    static isWinningStreak(boardSize, cells, coordinate, symbol, streakLength = 3) {
+        return StreakCheckStraight.isWinningStreakStraight(boardSize, cells, coordinate, symbol, 'row', streakLength)
+            || StreakCheckStraight.isWinningStreakStraight(boardSize, cells, coordinate, symbol, 'col', streakLength);
     }
 
-    static isWinningStreakStraight(cells, coordinate, symbol, orientation, streakLength) {
+    static isWinningStreakStraight(boardSize, cells, coordinate, symbol, orientation, streakLength) {
         let rowOffset = 0;
         let colOffset = 0;
         if (orientation === 'row') {
@@ -18,9 +18,9 @@ class StreakCheckStraight {
             coordinate[orientation] >= streakLength - 1;
         const isCenterStreakPossible =
             coordinate[orientation] >= 1 &&
-            coordinate[orientation] < this.size - 1;
+            coordinate[orientation] < boardSize - 1;
         const isRightBottomStreakPossible =
-            coordinate[orientation] <= this.size - streakLength;
+            coordinate[orientation] <= boardSize - streakLength;
 
         if (isLeftTopStreakPossible) {
             result = [

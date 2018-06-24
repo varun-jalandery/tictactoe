@@ -15,7 +15,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(48, 'x');
         board.markCell(59, 'x');
         board.markCell(70, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(70, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(70, 'x'), true, 'cells 48,59,70 is a winning streak');
         done();
     });
 
@@ -24,7 +24,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(98, 'x');
         board.markCell(87, 'x');
         board.markCell(76, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(76, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(76, 'x'), true, 'cells 98,87,76 is a winning streak');
         done();
     });
 
@@ -33,7 +33,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(55, 'x');
         board.markCell(77, 'x');
         board.markCell(66, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(66, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(66, 'x'), true, 'cells 55,77,66 is a winning streak');
         done();
     });
 
@@ -42,7 +42,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(50, 'x');
         board.markCell(59, 'x');
         board.markCell(68, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(68, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(68, 'x'), true, 'cells 50,59,68 is a winning streak');
         done();
     });
 
@@ -51,7 +51,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(65, 'x');
         board.markCell(47, 'x');
         board.markCell(56, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(56, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(56, 'x'), true, 'cells 65,47,56 is a winning streak');
         done();
     });
 
@@ -60,7 +60,7 @@ describe('src/Board/Board Diagonal Streaks : isWinningStreakOccurringAroundCell(
         board.markCell(93, 'x');
         board.markCell(84, 'x');
         board.markCell(75, 'x');
-        assert.equal(board.isWinningStreakOccurringAroundCell(75, 'x'), true);
+        assert.equal(board.isWinningStreakOccurringAroundCell(75, 'x'), true, 'cells 93,84,75 is a winning streak');
         done();
     });
 

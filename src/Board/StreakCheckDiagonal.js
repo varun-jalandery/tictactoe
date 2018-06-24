@@ -1,23 +1,23 @@
 class StreakCheckDiagonal {
 
-    static isWinningStreak(cells, coordinate, symbol, streakLength = 3) {
-        return StreakCheckDiagonal.isWinningStreakInDiagnolOne(cells, coordinate, symbol, streakLength)
-            || StreakCheckDiagonal.isWinningStreakInDiagnolTwo(cells, coordinate, symbol, streakLength);
+    static isWinningStreak(boardSize, cells, coordinate, symbol, streakLength = 3) {
+        return StreakCheckDiagonal.isWinningStreakInDiagnolOne(boardSize, cells, coordinate, symbol, streakLength)
+            || StreakCheckDiagonal.isWinningStreakInDiagnolTwo(boardSize, cells, coordinate, symbol, streakLength);
     }
 
-    static isWinningStreakInDiagnolOne(cells, coordinate, symbol, streakLength) {
+    static isWinningStreakInDiagnolOne(boardSize, cells, coordinate, symbol, streakLength) {
         let result = false;
         const isDownStreakPossible =
-            coordinate.row <= this.size - streakLength &&
-            coordinate.col <= this.size - streakLength;
+            coordinate.row <= boardSize - streakLength &&
+            coordinate.col <= boardSize - streakLength;
         const isTopStreakPossible =
             coordinate.row >= streakLength - 1 &&
             coordinate.col >= streakLength - 1;
         const isCenterStreakPossible =
             coordinate.col > 0 &&
             coordinate.row > 0 &&
-            coordinate.col < this.size - 1 &&
-            coordinate.row < this.size - 1;
+            coordinate.col < boardSize - 1 &&
+            coordinate.row < boardSize - 1;
 
         if (isDownStreakPossible) {
             result = [
@@ -47,19 +47,19 @@ class StreakCheckDiagonal {
         return result;
     }
 
-    static isWinningStreakInDiagnolTwo(cells, coordinate, symbol, streakLength) {
+    static isWinningStreakInDiagnolTwo(boardSize, cells, coordinate, symbol, streakLength) {
         let result = false;
         const isDownStreakPossible =
             coordinate.col >= streakLength - 1 &&
-            coordinate.row <= this.size - streakLength;
+            coordinate.row <= boardSize - streakLength;
         const isTopStreakPossible =
-            coordinate.col <= this.size - streakLength &&
+            coordinate.col <= boardSize - streakLength &&
             coordinate.row >= streakLength - 1;
         const isCenterStreakPossible =
             coordinate.row > 0 &&
-            coordinate.row < this.size - 1 &&
+            coordinate.row < boardSize - 1 &&
             coordinate.col > 0 &&
-            coordinate.col < this.size - 1;
+            coordinate.col < boardSize - 1;
 
         if (isDownStreakPossible) {
             result = [
