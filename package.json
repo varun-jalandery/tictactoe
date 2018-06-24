@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "NODE_ENV=test mocha --recursive",
+    "build": "npm install",
     "format": "find ./ -name '*.js' | xargs ./node_modules/prettier/bin-prettier.js --write",
     "precommit": "pretty-quick --staged"
   },
