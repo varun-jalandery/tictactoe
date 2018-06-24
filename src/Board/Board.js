@@ -1,7 +1,7 @@
 const util = require('util');
 const Cell = require('./Cell');
 const StreakCheckStraight = require('./StreakCheckStraight');
-const StreakCheckDiagnol = require('./StreakCheckDiagnol');
+const StreakCheckDiagonal = require('./StreakCheckDiagonal');
 
 class Board {
     constructor(size) {
@@ -56,7 +56,7 @@ class Board {
         }
         const coordinate = this.getCellCoordinate(cellNumber);
         return StreakCheckStraight.isWinningStreak(this.cells, coordinate, symbol)
-            || StreakCheckDiagnol.isWinningStreak(this.cells, coordinate, symbol);
+            || StreakCheckDiagonal.isWinningStreak(this.cells, coordinate, symbol);
     }
 
     getCell(cellNumber) {
@@ -87,6 +87,14 @@ class Board {
 
     isBoardFull() {
         return this.numberOfCells <= this.numberOfCellsOccupied;
+    }
+
+    getNumberOfCells() {
+        return this.numberOfCells;
+    }
+
+    getNumberOfCellsOccupied() {
+        return this.numberOfCellsOccupied;
     }
 
     getBoardDrawing() {

@@ -24,6 +24,10 @@ class Cell {
     isAvailable() {
         return !isNaN(this.value);
     }
+
+    getValue() {
+        return this.value;
+    }
 }
 
 module.exports = Cell;

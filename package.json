@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test mocha --recursive",
     "format": "find ./ -name '*.js' | xargs ./node_modules/prettier/bin-prettier.js --write",
     "precommit": "pretty-quick --staged"
   },

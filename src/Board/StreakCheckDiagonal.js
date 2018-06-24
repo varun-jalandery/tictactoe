@@ -1,8 +1,8 @@
-class StreakCheckDiagnol {
+class StreakCheckDiagonal {
 
     static isWinningStreak(cells, coordinate, symbol, streakLength = 3) {
-        return StreakCheckDiagnol.isWinningStreakInDiagnolOne(cells, coordinate, symbol, streakLength)
-            || StreakCheckDiagnol.isWinningStreakInDiagnolTwo(cells, coordinate, symbol, streakLength);
+        return StreakCheckDiagonal.isWinningStreakInDiagnolOne(cells, coordinate, symbol, streakLength)
+            || StreakCheckDiagonal.isWinningStreakInDiagnolTwo(cells, coordinate, symbol, streakLength);
     }
 
     static isWinningStreakInDiagnolOne(cells, coordinate, symbol, streakLength) {
@@ -92,4 +92,4 @@ class StreakCheckDiagnol {
 
 }
 
-module.exports = StreakCheckDiagnol;
+module.exports = StreakCheckDiagonal;
