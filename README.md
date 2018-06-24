@@ -8,6 +8,8 @@
 
 
 This game solution is done in nodejs and is tested in v8.11.3 LTS version of node.
+No external dependencies are used except chai and mocha for unit testing.
+These dependencies are saved as devDependencies. 
 
 You can run the below command to install nodejs and npm.
 To install the nodejs and npm, run the below command.
@@ -15,7 +17,7 @@ To install the nodejs and npm, run the below command.
 $ ./install_node.sh
 ```
 
-To build the solution, run the below command.
+To build the solution, run the below command. Build will install the dependencies and run the tests.
 ```sh
 $ ./build.sh
 ```
