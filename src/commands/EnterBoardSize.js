@@ -19,7 +19,8 @@ class EnterBoardSize extends BaseCommand {
             return false;
         }
         if (parseInt(input, 10) < 3) {
-            this.error = 'Please enter a valid board size greater than or equal to 3.\n';
+            this.error =
+                'Please enter a valid board size greater than or equal to 3.\n';
             return false;
         }
         return true;

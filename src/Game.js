@@ -61,13 +61,17 @@ class Game {
         return output;
     }
 
-
     isGameComplete() {
         return this.isComplete;
     }
 
     checkGame(cellNumber, symbol) {
-        if (this.getBoard().isWinningStreakOccurringAroundCell(cellNumber, symbol)) {
+        if (
+            this.getBoard().isWinningStreakOccurringAroundCell(
+                cellNumber,
+                symbol
+            )
+        ) {
             this.isComplete = true;
             this.winner = JSON.parse(JSON.stringify(this.currentPlayer));
         } else if (this.getBoard().isBoardFull()) {
@@ -79,14 +83,17 @@ class Game {
         let results = '';
         if (this.isGameComplete()) {
             if (this.winner) {
-                results += util.format('Player %s has won with symbol %s\n', this.winner.name, this.winner.symbol);
+                results += util.format(
+                    'Player %s has won with symbol %s\n',
+                    this.winner.name,
+                    this.winner.symbol
+                );
             } else {
-                results += 'No player has won.\nGame Ended.'
+                results += 'No player has won.\nGame Ended.';
             }
         }
         return results;
     }
-
 }
 
 module.exports = Game;

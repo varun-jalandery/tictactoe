@@ -51,8 +51,8 @@ class Board {
 
     getCoordinate(cellNumber) {
         return {
-            row : Math.ceil(cellNumber / this.size) - 1,
-            col : (cellNumber - 1) % this.size
+            row: Math.ceil(cellNumber / this.size) - 1,
+            col: (cellNumber - 1) % this.size
         };
     }
 
@@ -88,7 +88,7 @@ class Board {
     }
 
     checkStreaks(cellNumber, symbol) {
-        if(this.checkStraightStreaks(cellNumber, symbol, 'row')) {
+        if (this.checkStraightStreaks(cellNumber, symbol, 'row')) {
             return true;
         }
         if (this.checkStraightStreaks(cellNumber, symbol, 'col')) {
@@ -112,15 +112,23 @@ class Board {
         }
         let result = false;
         const coordinate = this.getCoordinate(cellNumber);
-        const isLeftTopStreakPossible = coordinate[orientation] >= STREAK_LENGTH - 1;
-        const isCenterStreakPossible = coordinate[orientation] >= 1 && coordinate[orientation] < this.size - 1;
-        const isRightBottomStreakPossible = coordinate[orientation] <= this.size - STREAK_LENGTH;
+        const isLeftTopStreakPossible =
+            coordinate[orientation] >= STREAK_LENGTH - 1;
+        const isCenterStreakPossible =
+            coordinate[orientation] >= 1 &&
+            coordinate[orientation] < this.size - 1;
+        const isRightBottomStreakPossible =
+            coordinate[orientation] <= this.size - STREAK_LENGTH;
 
         if (isLeftTopStreakPossible) {
             result = [
                 this.cells[coordinate.row][coordinate.col].value,
-                this.cells[coordinate.row - rowOffset][coordinate.col - colOffset].value,
-                this.cells[coordinate.row - 2 * rowOffset][coordinate.col - 2 * colOffset].value
+                this.cells[coordinate.row - rowOffset][
+                    coordinate.col - colOffset
+                ].value,
+                this.cells[coordinate.row - 2 * rowOffset][
+                    coordinate.col - 2 * colOffset
+                ].value
             ].every(val => val == symbol);
         }
         if (result) return result;
@@ -128,8 +136,12 @@ class Board {
         if (isCenterStreakPossible) {
             result = [
                 this.cells[coordinate.row][coordinate.col].value,
-                this.cells[coordinate.row - rowOffset][coordinate.col - colOffset].value,
-                this.cells[coordinate.row + rowOffset][coordinate.col + colOffset].value
+                this.cells[coordinate.row - rowOffset][
+                    coordinate.col - colOffset
+                ].value,
+                this.cells[coordinate.row + rowOffset][
+                    coordinate.col + colOffset
+                ].value
             ].every(val => val == symbol);
         }
         if (result) return result;
@@ -137,8 +149,12 @@ class Board {
         if (isRightBottomStreakPossible) {
             result = [
                 this.cells[coordinate.row][coordinate.col].value,
-                this.cells[coordinate.row + rowOffset][coordinate.col + colOffset].value,
-                this.cells[coordinate.row + 2 * rowOffset][coordinate.col + 2 * colOffset].value
+                this.cells[coordinate.row + rowOffset][
+                    coordinate.col + colOffset
+                ].value,
+                this.cells[coordinate.row + 2 * rowOffset][
+                    coordinate.col + 2 * colOffset
+                ].value
             ].every(val => val == symbol);
         }
         return result;
@@ -147,14 +163,17 @@ class Board {
     checkDiagnalOne(cellNumber, symbol) {
         let result = false;
         const coordinate = this.getCoordinate(cellNumber);
-        const isDownStreakPossible = coordinate.row <= this.size - STREAK_LENGTH
-            && coordinate.col <= this.size - STREAK_LENGTH;
-        const isTopStreakPossible = coordinate.row >= STREAK_LENGTH - 1
-            && coordinate.col >= STREAK_LENGTH - 1;
+        const isDownStreakPossible =
+            coordinate.row <= this.size - STREAK_LENGTH &&
+            coordinate.col <= this.size - STREAK_LENGTH;
+        const isTopStreakPossible =
+            coordinate.row >= STREAK_LENGTH - 1 &&
+            coordinate.col >= STREAK_LENGTH - 1;
         const isCenterStreakPossible =
-            coordinate.col > 0 && coordinate.row > 0
-            && coordinate.col < this.size - 1
-            && coordinate.row < this.size - 1;
+            coordinate.col > 0 &&
+            coordinate.row > 0 &&
+            coordinate.col < this.size - 1 &&
+            coordinate.row < this.size - 1;
 
         if (isDownStreakPossible) {
             result = [
@@ -188,13 +207,17 @@ class Board {
         let result = false;
         const coordinate = this.getCoordinate(cellNumber);
 
-        const isDownStreakPossible = coordinate.col >= STREAK_LENGTH - 1
-            && coordinate.row <= this.size - STREAK_LENGTH;
-        const isTopStreakPossible = coordinate.col <= this.size - STREAK_LENGTH
-            && coordinate.row >= STREAK_LENGTH - 1;
+        const isDownStreakPossible =
+            coordinate.col >= STREAK_LENGTH - 1 &&
+            coordinate.row <= this.size - STREAK_LENGTH;
+        const isTopStreakPossible =
+            coordinate.col <= this.size - STREAK_LENGTH &&
+            coordinate.row >= STREAK_LENGTH - 1;
         const isCenterStreakPossible =
-            coordinate.row > 0 && coordinate.row < this.size - 1
-            && coordinate.col > 0 && coordinate.col < this.size - 1;
+            coordinate.row > 0 &&
+            coordinate.row < this.size - 1 &&
+            coordinate.col > 0 &&
+            coordinate.col < this.size - 1;
 
         if (isDownStreakPossible) {
             result = [
