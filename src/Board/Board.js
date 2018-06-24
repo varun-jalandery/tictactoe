@@ -55,8 +55,20 @@ class Board {
             return false;
         }
         const coordinate = this.getCellCoordinate(cellNumber);
-        return StreakCheckStraight.isWinningStreak(this.size, this.cells, coordinate, symbol)
-            || StreakCheckDiagonal.isWinningStreak(this.size, this.cells, coordinate, symbol);
+        return (
+            StreakCheckStraight.isWinningStreak(
+                this.size,
+                this.cells,
+                coordinate,
+                symbol
+            ) ||
+            StreakCheckDiagonal.isWinningStreak(
+                this.size,
+                this.cells,
+                coordinate,
+                symbol
+            )
+        );
     }
 
     getCell(cellNumber) {

@@ -1,11 +1,36 @@
 class StreakCheckDiagonal {
-
-    static isWinningStreak(boardSize, cells, coordinate, symbol, streakLength = 3) {
-        return StreakCheckDiagonal.isWinningStreakInDiagnolOne(boardSize, cells, coordinate, symbol, streakLength)
-            || StreakCheckDiagonal.isWinningStreakInDiagnolTwo(boardSize, cells, coordinate, symbol, streakLength);
+    static isWinningStreak(
+        boardSize,
+        cells,
+        coordinate,
+        symbol,
+        streakLength = 3
+    ) {
+        return (
+            StreakCheckDiagonal.isWinningStreakInDiagnolOne(
+                boardSize,
+                cells,
+                coordinate,
+                symbol,
+                streakLength
+            ) ||
+            StreakCheckDiagonal.isWinningStreakInDiagnolTwo(
+                boardSize,
+                cells,
+                coordinate,
+                symbol,
+                streakLength
+            )
+        );
     }
 
-    static isWinningStreakInDiagnolOne(boardSize, cells, coordinate, symbol, streakLength) {
+    static isWinningStreakInDiagnolOne(
+        boardSize,
+        cells,
+        coordinate,
+        symbol,
+        streakLength
+    ) {
         let result = false;
         const isDownStreakPossible =
             coordinate.row <= boardSize - streakLength &&
@@ -47,7 +72,13 @@ class StreakCheckDiagonal {
         return result;
     }
 
-    static isWinningStreakInDiagnolTwo(boardSize, cells, coordinate, symbol, streakLength) {
+    static isWinningStreakInDiagnolTwo(
+        boardSize,
+        cells,
+        coordinate,
+        symbol,
+        streakLength
+    ) {
         let result = false;
         const isDownStreakPossible =
             coordinate.col >= streakLength - 1 &&
@@ -88,8 +119,6 @@ class StreakCheckDiagonal {
         }
         return result;
     }
-
-
 }
 
 module.exports = StreakCheckDiagonal;

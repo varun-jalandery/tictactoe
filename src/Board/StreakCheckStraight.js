@@ -1,11 +1,39 @@
 class StreakCheckStraight {
-
-    static isWinningStreak(boardSize, cells, coordinate, symbol, streakLength = 3) {
-        return StreakCheckStraight.isWinningStreakStraight(boardSize, cells, coordinate, symbol, 'row', streakLength)
-            || StreakCheckStraight.isWinningStreakStraight(boardSize, cells, coordinate, symbol, 'col', streakLength);
+    static isWinningStreak(
+        boardSize,
+        cells,
+        coordinate,
+        symbol,
+        streakLength = 3
+    ) {
+        return (
+            StreakCheckStraight.isWinningStreakStraight(
+                boardSize,
+                cells,
+                coordinate,
+                symbol,
+                'row',
+                streakLength
+            ) ||
+            StreakCheckStraight.isWinningStreakStraight(
+                boardSize,
+                cells,
+                coordinate,
+                symbol,
+                'col',
+                streakLength
+            )
+        );
     }
 
-    static isWinningStreakStraight(boardSize, cells, coordinate, symbol, orientation, streakLength) {
+    static isWinningStreakStraight(
+        boardSize,
+        cells,
+        coordinate,
+        symbol,
+        orientation,
+        streakLength
+    ) {
         let rowOffset = 0;
         let colOffset = 0;
         if (orientation === 'row') {
@@ -26,11 +54,11 @@ class StreakCheckStraight {
             result = [
                 cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row - rowOffset][
-                coordinate.col - colOffset
-                    ].getValue(),
+                    coordinate.col - colOffset
+                ].getValue(),
                 cells[coordinate.row - 2 * rowOffset][
-                coordinate.col - 2 * colOffset
-                    ].getValue()
+                    coordinate.col - 2 * colOffset
+                ].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
@@ -39,11 +67,11 @@ class StreakCheckStraight {
             result = [
                 cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row - rowOffset][
-                coordinate.col - colOffset
-                    ].getValue(),
+                    coordinate.col - colOffset
+                ].getValue(),
                 cells[coordinate.row + rowOffset][
-                coordinate.col + colOffset
-                    ].getValue()
+                    coordinate.col + colOffset
+                ].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
@@ -52,16 +80,15 @@ class StreakCheckStraight {
             result = [
                 cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row + rowOffset][
-                coordinate.col + colOffset
-                    ].getValue(),
+                    coordinate.col + colOffset
+                ].getValue(),
                 cells[coordinate.row + 2 * rowOffset][
-                coordinate.col + 2 * colOffset
-                    ].getValue()
+                    coordinate.col + 2 * colOffset
+                ].getValue()
             ].every(val => val == symbol);
         }
         return result;
     }
-
 }
 
 module.exports = StreakCheckStraight;
