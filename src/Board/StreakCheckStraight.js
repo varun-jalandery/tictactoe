@@ -24,39 +24,39 @@ class StreakCheckStraight {
 
         if (isLeftTopStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
+                cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row - rowOffset][
                 coordinate.col - colOffset
-                    ].value,
+                    ].getValue(),
                 cells[coordinate.row - 2 * rowOffset][
                 coordinate.col - 2 * colOffset
-                    ].value
+                    ].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isCenterStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
+                cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row - rowOffset][
                 coordinate.col - colOffset
-                    ].value,
+                    ].getValue(),
                 cells[coordinate.row + rowOffset][
                 coordinate.col + colOffset
-                    ].value
+                    ].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isRightBottomStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
+                cells[coordinate.row][coordinate.col].getValue(),
                 cells[coordinate.row + rowOffset][
                 coordinate.col + colOffset
-                    ].value,
+                    ].getValue(),
                 cells[coordinate.row + 2 * rowOffset][
                 coordinate.col + 2 * colOffset
-                    ].value
+                    ].getValue()
             ].every(val => val == symbol);
         }
         return result;

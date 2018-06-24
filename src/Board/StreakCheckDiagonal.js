@@ -21,27 +21,27 @@ class StreakCheckDiagonal {
 
         if (isDownStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row + 1][coordinate.col + 1].value,
-                cells[coordinate.row + 2][coordinate.col + 2].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row + 1][coordinate.col + 1].getValue(),
+                cells[coordinate.row + 2][coordinate.col + 2].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isTopStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row - 1][coordinate.col - 1].value,
-                cells[coordinate.row - 2][coordinate.col - 2].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row - 1][coordinate.col - 1].getValue(),
+                cells[coordinate.row - 2][coordinate.col - 2].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isCenterStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row + 1][coordinate.col + 1].value,
-                cells[coordinate.row - 1][coordinate.col - 1].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row + 1][coordinate.col + 1].getValue(),
+                cells[coordinate.row - 1][coordinate.col - 1].getValue()
             ].every(val => val == symbol);
         }
         return result;
@@ -63,27 +63,27 @@ class StreakCheckDiagonal {
 
         if (isDownStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row + 1][coordinate.col - 1].value,
-                cells[coordinate.row + 2][coordinate.col - 2].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row + 1][coordinate.col - 1].getValue(),
+                cells[coordinate.row + 2][coordinate.col - 2].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isTopStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row - 1][coordinate.col + 1].value,
-                cells[coordinate.row - 2][coordinate.col + 2].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row - 1][coordinate.col + 1].getValue(),
+                cells[coordinate.row - 2][coordinate.col + 2].getValue()
             ].every(val => val == symbol);
         }
         if (result) return result;
 
         if (isCenterStreakPossible) {
             result = [
-                cells[coordinate.row][coordinate.col].value,
-                cells[coordinate.row + 1][coordinate.col - 1].value,
-                cells[coordinate.row - 1][coordinate.col + 1].value
+                cells[coordinate.row][coordinate.col].getValue(),
+                cells[coordinate.row + 1][coordinate.col - 1].getValue(),
+                cells[coordinate.row - 1][coordinate.col + 1].getValue()
             ].every(val => val == symbol);
         }
         return result;
