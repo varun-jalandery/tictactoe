@@ -5,6 +5,18 @@ const StreakCheckDiagonal = require('../../../src/Board/StreakCheckDiagonal');
 
 describe('src/Board/StreakCheckStraight', () => {
 
+    it('should return false if no winning streak is formed', done => {
+        const board = new Board(10);
+        board.markCell(48, 'x');
+        board.markCell(59, 'x');
+        board.markCell(49, 'x');
+        assert.equal(
+            StreakCheckDiagonal.isWinningStreak(10, board.cells, board.getCellCoordinate(49), 'x'),
+            false
+        );
+        done();
+    });
+
     it('should return true if diagonal one top streak is formed', done => {
         const board = new Board(10);
         board.markCell(48, 'x');

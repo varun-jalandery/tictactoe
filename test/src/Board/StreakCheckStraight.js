@@ -5,6 +5,18 @@ const StreakCheckStraight = require('../../../src/Board/StreakCheckStraight');
 
 describe('src/Board/StreakCheckStraight : isWinningStreak()', () => {
 
+    it('should return false if no winning streak is formed', done => {
+        const board = new Board(10);
+        board.markCell(41, 'x');
+        board.markCell(42, 'x');
+        board.markCell(32, 'x');
+        assert.equal(
+            StreakCheckStraight.isWinningStreak(10, board.cells, board.getCellCoordinate(32), 'x'),
+            false
+        );
+        done();
+    });
+
     it('should return true if left streak is formed', done => {
         const board = new Board(10);
         board.markCell(41, 'x');
