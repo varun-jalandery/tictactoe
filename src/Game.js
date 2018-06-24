@@ -1,5 +1,5 @@
 const util = require('util');
-const Board = require('./Board');
+const Board = require('./Board/Board');
 const Player = require('./Player');
 
 class Game {

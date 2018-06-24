@@ -30,10 +30,6 @@ class BaseCommand {
     isOneTimeCommand() {
         return this.isOneTmCmd;
     }
-
-    isBoardToBeDrawn() {
-        return false;
-    }
 }
 
 module.exports = BaseCommand;
