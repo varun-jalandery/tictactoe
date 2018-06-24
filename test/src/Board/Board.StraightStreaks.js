@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 
 const Board = require('../../../src/Board/Board');
 
-describe('src/Board/Board Straight Streaks : isWinningStreakOccurringAroundCell()', () => {
+describe('src/Board/Board - Check Straight Streaks : isWinningStreakOccurringAroundCell()', () => {
 
     it('should return false if no winning streak is formed', done => {
         const board = new Board(10);
