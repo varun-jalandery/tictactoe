@@ -1,7 +1,6 @@
 # Tit Tac Toe Game
 ### This solution is generic and can be used to play tic tac toe game on any board size.
 ### The size of the winning streak is always 3 irrespective of the board size.
-### I have also included the .git metadata so which would give the commit history.
 ### master branch is the main branch on which the complete code is present.
 
 ## Author Varun Jalandery <varun.jalandery@gmail.com>
